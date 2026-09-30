@@ -77,7 +77,8 @@ const toggleAiTask = (id) => {
     )
   );
 };
-  const [roadmap, setRoadmap] = useState(() => {
+ // Load the saved roadmap
+const [roadmap, setRoadmap] = useState(() => {
   try {
     const savedRoadmap = localStorage.getItem("daynexa-roadmap");
 
@@ -87,29 +88,7 @@ const toggleAiTask = (id) => {
   } catch (error) {
     console.error("Could not load roadmap:", error);
   }
-// Save AI study plan
-useEffect(() => {
-  localStorage.setItem(
-    "daynexa-ai-plan",
-    JSON.stringify(aiPlan)
-  );
-}, [aiPlan]);
 
-// Save learning goal
-useEffect(() => {
-  localStorage.setItem(
-    "daynexa-ai-goal",
-    aiGoal
-  );
-}, [aiGoal]);
-
-// Save study duration
-useEffect(() => {
-  localStorage.setItem(
-    "daynexa-ai-days",
-    aiDays
-  );
-}, [aiDays]);
   return [
     {
       id: 1,
@@ -149,12 +128,28 @@ useEffect(() => {
     },
   ];
 });
-  useEffect(() => {
-  localStorage.setItem(
-    "daynexa-roadmap",
-    JSON.stringify(roadmap)
-  );
-}, [roadmap]);  
+
+// Save AI study plan
+useEffect(() => {
+  localStorage.setItem("daynexa-ai-plan", JSON.stringify(aiPlan));
+}, [aiPlan]);
+
+// Save learning goal
+useEffect(() => {
+  localStorage.setItem("daynexa-ai-goal", aiGoal);
+}, [aiGoal]);
+
+// Save study duration
+useEffect(() => {
+  localStorage.setItem("daynexa-ai-days", aiDays);
+}, [aiDays]);
+
+// Save roadmap
+useEffect(() => {
+  localStorage.setItem("daynexa-roadmap", JSON.stringify(roadmap));
+}, [roadmap]);
+
+// Update a roadmap milestone
 const toggleRoadmapStep = (id) => {
   setRoadmap((steps) =>
     steps.map((step) =>
@@ -169,6 +164,7 @@ const toggleRoadmapStep = (id) => {
   );
 };
 
+// Calculate roadmap progress
 const roadmapProgress = Math.round(
   (roadmap.filter((step) => step.done).length / roadmap.length) * 100
 );
@@ -583,6 +579,282 @@ const updateLessonProgress = (id, amount) => {
             <div className="eyebrow">YOUR DAYNEXA WORKSPACE</div>
             <h1>{activePage}</h1>
             <p>This space is ready for us to build next.</p>
+ {activePage === "Learning Journey" && (
+  <div className="journey-page">
+
+    {/* HEADER */}
+    <div className="journey-heading">
+      <div>
+        <div className="eyebrow">YOUR GROWTH STORY</div>
+
+        <h2>Your Learning Journey</h2>
+
+        <p>
+          See how your small steps are becoming meaningful progress.
+        </p>
+      </div>
+    </div>
+
+    {/* JOURNEY STATS */}
+    <div className="journey-stats">
+
+      <div className="journey-stat">
+        <span>Roadmap progress</span>
+        <strong>{roadmapProgress}%</strong>
+
+        <div className="stat-mini-track">
+          <div
+            className="stat-mini-fill"
+            style={{ width: `${roadmapProgress}%` }}
+          />
+        </div>
+      </div>
+
+      <div className="journey-stat">
+        <span>Lessons completed</span>
+        <strong>
+          {learningCourses.reduce(
+            (total, course) => total + course.completedLessons,
+            0
+          )}
+        </strong>
+
+        <small>Lessons finished</small>
+      </div>
+
+      <div className="journey-stat">
+        <span>Goals completed</span>
+        <strong>
+          {learningGoals.filter((goal) => goal.done).length}
+        </strong>
+
+        <small>Learning goals achieved</small>
+      </div>
+
+      <div className="journey-stat">
+        <span>Tasks completed</span>
+        <strong>{completed}</strong>
+
+        <small>Tasks finished</small>
+      </div>
+
+    </div>
+
+    {/* OVERALL PROGRESS */}
+    <div className="journey-progress-card">
+
+      <div className="journey-progress-header">
+        <div>
+          <span className="section-kicker">OVERALL JOURNEY</span>
+
+          <h3>You're moving forward ✦</h3>
+        </div>
+
+        <strong>{roadmapProgress}%</strong>
+      </div>
+
+      <div className="journey-progress-track">
+        <div
+          className="journey-progress-fill"
+          style={{ width: `${roadmapProgress}%` }}
+        />
+      </div>
+
+      <p>
+        Keep completing milestones, lessons and learning goals
+        to continue building your journey.
+      </p>
+
+    </div>
+
+    {/* MILESTONES */}
+    <div className="journey-section">
+
+      <div className="section-kicker">YOUR PATH</div>
+
+      <h3>Learning milestones</h3>
+
+      <div className="journey-timeline">
+
+        {roadmap.map((step, index) => {
+
+          const totalTasks = step.tasks?.length || 0;
+
+          const completedTasks = step.done
+            ? totalTasks
+            : 0;
+
+          const milestoneProgress =
+            totalTasks > 0
+              ? Math.round((completedTasks / totalTasks) * 100)
+              : 0;
+
+          return (
+            <div className="journey-item" key={step.id}>
+
+              {/* TIMELINE */}
+              <div className="journey-marker-column">
+
+                <div
+                  className={`journey-marker ${
+                    step.done ? "journey-marker-done" : ""
+                  }`}
+                >
+                  {step.done ? "✓" : index + 1}
+                </div>
+
+                {index !== roadmap.length - 1 && (
+                  <div
+                    className={`journey-line ${
+                      step.done ? "journey-line-done" : ""
+                    }`}
+                  />
+                )}
+
+              </div>
+
+              {/* MILESTONE CARD */}
+              <div
+                className={`journey-card ${
+                  step.done ? "journey-card-complete" : ""
+                }`}
+              >
+
+                <div className="journey-card-top">
+
+                  <div>
+
+                    <span
+                      className={`journey-status ${
+                        step.done
+                          ? "journey-status-complete"
+                          : "journey-status-progress"
+                      }`}
+                    >
+                      {step.done
+                        ? "COMPLETED"
+                        : step.status.toUpperCase()}
+                    </span>
+
+                    <h4>{step.title}</h4>
+
+                  </div>
+
+                  {step.done && (
+                    <span className="journey-check">
+                      ✓
+                    </span>
+                  )}
+
+                </div>
+
+                <p>{step.description}</p>
+
+                {/* MILESTONE PROGRESS */}
+                <div className="milestone-progress">
+
+                  <div className="milestone-progress-header">
+
+                    <span>Milestone progress</span>
+
+                    <strong>
+                      {milestoneProgress}%
+                    </strong>
+
+                  </div>
+
+                  <div className="milestone-progress-track">
+
+                    <div
+                      className="milestone-progress-fill"
+                      style={{
+                        width: `${milestoneProgress}%`,
+                      }}
+                    />
+
+                  </div>
+
+                </div>
+
+                {/* TASKS */}
+                <div className="journey-tasks">
+
+                  {step.tasks.map((task) => (
+                    <span
+                      className={
+                        step.done
+                          ? "journey-task-done"
+                          : ""
+                      }
+                      key={task}
+                    >
+                      {step.done ? "✓" : "○"} {task}
+                    </span>
+                  ))}
+
+                </div>
+
+                {/* ACTION */}
+                {!step.done && (
+                  <button
+                    className="journey-action"
+                    onClick={() =>
+                      toggleRoadmapStep(step.id)
+                    }
+                  >
+                    Mark milestone complete →
+                  </button>
+                )}
+
+                {step.done && (
+                  <div className="journey-completed-message">
+                    ✓ Milestone completed
+                  </div>
+                )}
+
+              </div>
+
+            </div>
+          );
+        })}
+
+      </div>
+
+    </div>
+
+    {/* NEXT STEP */}
+    <div className="journey-next-card">
+
+      <div>
+
+        <span className="section-kicker">
+          NEXT STEP
+        </span>
+
+        <h3>
+          {roadmap.find((step) => !step.done)?.title ||
+            "Journey completed"}
+        </h3>
+
+        <p>
+          {roadmap.find((step) => !step.done)?.description ||
+            "You've completed every milestone in your current roadmap."}
+        </p>
+
+      </div>
+
+      <button
+        className="journey-action"
+        onClick={() => setActivePage("My Roadmap")}
+      >
+        View roadmap →
+      </button>
+
+    </div>
+
+  </div>
+)}
+
             {activePage === "My Learning" && (
   <div className="learning-page">
     <div className="learning-heading">
@@ -707,15 +979,34 @@ const updateLessonProgress = (id, amount) => {
 )}
 {activePage === "My Roadmap" && (
   <div className="roadmap-page">
-    <div className="eyebrow">YOUR PATH FORWARD</div>
-    <h2 className="roadmap-heading">My Growth Roadmap</h2>
-    <p className="roadmap-subtitle">
-      Every milestone brings you closer to your goals.
-    </p>
 
+    {/* HEADER */}
+    <div className="roadmap-header">
+      <div className="eyebrow">YOUR PATH FORWARD</div>
+
+      <h2 className="roadmap-heading">
+        My Growth Roadmap
+      </h2>
+
+      <p className="roadmap-subtitle">
+        Every milestone brings you closer to your goals.
+      </p>
+    </div>
+
+    {/* OVERALL PROGRESS */}
     <div className="roadmap-progress-card">
+
       <div className="roadmap-progress-info">
-        <span>Overall progress</span>
+        <div>
+          <span className="section-kicker">
+            OVERALL PROGRESS
+          </span>
+
+          <h3>
+            Your journey is moving forward ✦
+          </h3>
+        </div>
+
         <strong>{roadmapProgress}%</strong>
       </div>
 
@@ -726,53 +1017,130 @@ const updateLessonProgress = (id, amount) => {
         />
       </div>
 
-      <p>
-        {roadmap.filter((step) => step.done).length} of{" "}
-        {roadmap.length} milestones completed
-      </p>
+      <div className="roadmap-progress-bottom">
+        <p>
+          {roadmap.filter((step) => step.done).length} of{" "}
+          {roadmap.length} milestones completed
+        </p>
+
+        <span>
+          {roadmap.length -
+            roadmap.filter((step) => step.done).length}{" "}
+          remaining
+        </span>
+      </div>
+
     </div>
 
+    {/* ROADMAP */}
     <div className="roadmap-list">
+
       {roadmap.map((step, index) => (
         <div className="roadmap-step" key={step.id}>
+
+          {/* TIMELINE */}
           <div className="roadmap-step-marker">
-            <span className={step.done ? "marker-done" : ""}>
+
+            <span
+              className={step.done ? "marker-done" : ""}
+            >
               {step.done ? "✓" : index + 1}
             </span>
+
             {index !== roadmap.length - 1 && (
-              <div className="roadmap-connector" />
+              <div
+                className={`roadmap-connector ${
+                  step.done ? "connector-done" : ""
+                }`}
+              />
             )}
+
           </div>
 
-          <div className="roadmap-step-card">
+          {/* CARD */}
+          <div
+            className={`roadmap-step-card ${
+              step.done ? "roadmap-card-complete" : ""
+            }`}
+          >
+
             <div className="roadmap-step-top">
-              <span className="roadmap-step-status">
-                {step.done ? "Completed" : step.status}
-              </span>
+
+              <div className="roadmap-status-group">
+
+                <span
+                  className={`roadmap-step-status ${
+                    step.done
+                      ? "status-completed"
+                      : "status-active"
+                  }`}
+                >
+                  {step.done
+                    ? "✓ COMPLETED"
+                    : step.status.toUpperCase()}
+                </span>
+
+              </div>
 
               <button
-                className="roadmap-toggle"
-                onClick={() => toggleRoadmapStep(step.id)}
+                className={`roadmap-toggle ${
+                  step.done
+                    ? "toggle-complete"
+                    : ""
+                }`}
+                onClick={() =>
+                  toggleRoadmapStep(step.id)
+                }
               >
-                {step.done ? "Mark as incomplete" : "Mark as complete"}
+                {step.done
+                  ? "Mark as incomplete"
+                  : "Mark as complete →"}
               </button>
+
             </div>
 
             <h3>{step.title}</h3>
-            <p>{step.description}</p>
 
+            <p className="roadmap-step-description">
+              {step.description}
+            </p>
+
+            {/* TASKS */}
             <div className="roadmap-task-list">
+
               {step.tasks.map((task) => (
-                <div className="roadmap-task" key={task}>
-                  <span>{step.done ? "✓" : "○"}</span>
+                <div
+                  className={`roadmap-task ${
+                    step.done
+                      ? "roadmap-task-complete"
+                      : ""
+                  }`}
+                  key={task}
+                >
+                  <span>
+                    {step.done ? "✓" : "○"}
+                  </span>
+
                   {task}
                 </div>
               ))}
+
             </div>
+
+            {/* COMPLETED MESSAGE */}
+            {step.done && (
+              <div className="roadmap-completed-note">
+                ✓ Milestone completed
+              </div>
+            )}
+
           </div>
+
         </div>
       ))}
+
     </div>
+
   </div>
 )}
 {activePage === "AI Lab" && (

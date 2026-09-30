@@ -1747,3 +1747,1064 @@ button {
     padding: 20px;
   }
 }
+/* ================================
+   LEARNING JOURNEY
+================================ */
+
+.journey-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0 40px;
+  color: var(--text-primary, #f1f5f9);
+}
+
+.journey-heading {
+  margin-bottom: 28px;
+}
+
+.journey-heading h1 {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.journey-heading p {
+  margin: 0;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Journey statistics */
+
+.journey-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.journey-stat {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 18px;
+  background: var(--card-bg, rgba(255, 255, 255, 0.035));
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.journey-stat:hover {
+  transform: translateY(-3px);
+  border-color: rgba(99, 102, 241, 0.45);
+}
+
+.journey-stat h3 {
+  margin: 0 0 10px;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.journey-stat strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+/* Overall progress */
+
+.journey-progress-card {
+  margin-bottom: 34px;
+  padding: 25px;
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.12),
+    rgba(14, 165, 233, 0.055)
+  );
+}
+
+.journey-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.journey-progress-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.journey-progress-header strong {
+  color: #818cf8;
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.journey-progress-track {
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.journey-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  transition: width 0.45s ease;
+}
+
+/* Timeline section */
+
+.journey-section {
+  margin-top: 34px;
+}
+
+.journey-section > h2 {
+  margin: 0 0 24px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.journey-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Each timeline milestone */
+
+.journey-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 18px;
+  min-width: 0;
+}
+
+.journey-marker-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+.journey-marker {
+  z-index: 1;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #475569;
+  border-radius: 50%;
+  background: var(--page-bg, #111827);
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.journey-marker-done {
+  border-color: #10b981;
+  background: #10b981;
+  color: #ffffff;
+}
+
+.journey-line {
+  width: 2px;
+  flex: 1;
+  min-height: 28px;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.journey-line-done {
+  background: #10b981;
+}
+
+/* Milestone cards */
+
+.journey-card {
+  min-width: 0;
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 18px;
+  background: var(--card-bg, rgba(255, 255, 255, 0.035));
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.journey-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.journey-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.journey-card h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.journey-card p {
+  margin: 0 0 18px;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Status badges */
+
+.journey-status {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.journey-status-complete {
+  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.journey-status-progress {
+  border-color: rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.13);
+  color: #a5b4fc;
+}
+
+/* Milestone task checklist */
+
+.journey-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.journey-tasks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text-secondary, #cbd5e1);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.journey-tasks li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: #6366f1;
+}
+
+.journey-tasks .journey-task-done {
+  color: #34d399;
+}
+
+.journey-tasks .journey-task-done::before {
+  background: #10b981;
+}
+
+/* Complete milestone button */
+
+.journey-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.12);
+  color: #a5b4fc;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.journey-action:hover {
+  transform: translateY(-1px);
+  background: rgba(99, 102, 241, 0.22);
+}
+
+.journey-action:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 3px;
+}
+
+/* Next milestone highlight */
+
+.journey-next-card {
+  margin-top: 12px;
+  padding: 24px;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.08),
+    rgba(99, 102, 241, 0.09)
+  );
+}
+
+.journey-next-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.journey-next-card p {
+  margin: 0;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .journey-stats {
+    gap: 12px;
+  }
+
+  .journey-stat {
+    padding: 18px;
+  }
+
+  .journey-card {
+    padding: 19px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .journey-page {
+    padding-top: 4px;
+  }
+
+  .journey-heading {
+    margin-bottom: 22px;
+  }
+
+  .journey-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .journey-stat {
+    padding: 17px 19px;
+  }
+
+  .journey-stat strong {
+    font-size: 25px;
+  }
+
+  .journey-progress-card {
+    padding: 19px;
+    margin-bottom: 28px;
+  }
+
+  .journey-progress-header {
+    align-items: flex-start;
+  }
+
+  .journey-progress-header h3 {
+    font-size: 15px;
+  }
+
+  .journey-section > h2 {
+    font-size: 19px;
+  }
+
+  .journey-item {
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .journey-marker {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .journey-card {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .journey-card-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .journey-card h3 {
+    font-size: 16px;
+  }
+
+  .journey-status {
+    font-size: 10px;
+  }
+
+  .journey-next-card {
+    padding: 19px;
+  }
+
+  .journey-action {
+    width: 100%;
+  }
+}
+/* =========================================
+   LEARNING JOURNEY — HIGH CONTRAST FIX
+========================================= */
+
+/* Main text and headings */
+.journey-page {
+  color: #f8fafc !important;
+}
+
+.journey-heading h1,
+.journey-section > h2,
+.journey-card h3,
+.journey-next-card h3 {
+  color: #ffffff !important;
+  font-weight: 750;
+}
+
+/* Make descriptions easier to read */
+.journey-heading p,
+.journey-card p,
+.journey-next-card p,
+.journey-stat h3,
+.journey-tasks li {
+  color: #cbd5e1 !important;
+}
+
+/* Stronger statistic cards */
+.journey-stat {
+  background: #151c2e !important;
+  border: 1px solid #35415b !important;
+}
+
+.journey-stat strong {
+  color: #ffffff !important;
+}
+
+/* More visible progress panel */
+.journey-progress-card {
+  background: #171f38 !important;
+  border: 1px solid #4f46e5 !important;
+}
+
+.journey-progress-header h3 {
+  color: #ffffff !important;
+}
+
+.journey-progress-header strong {
+  color: #a5b4fc !important;
+}
+
+.journey-progress-track {
+  background: #374151 !important;
+}
+
+.journey-progress-fill {
+  background: linear-gradient(90deg, #6366f1, #06b6d4) !important;
+}
+
+/* Stronger milestone cards */
+.journey-card {
+  background: #151c2e !important;
+  border: 1px solid #35415b !important;
+}
+
+.journey-card:hover {
+  border-color: #818cf8 !important;
+}
+
+/* Make status badges stand out */
+.journey-status-complete {
+  background: #064e3b !important;
+  border-color: #10b981 !important;
+  color: #a7f3d0 !important;
+}
+
+.journey-status-progress {
+  background: #312e81 !important;
+  border-color: #818cf8 !important;
+  color: #e0e7ff !important;
+}
+
+/* Upcoming status, if your JSX uses this class */
+.journey-status-upcoming {
+  background: #334155 !important;
+  border-color: #64748b !important;
+  color: #f1f5f9 !important;
+}
+
+/* Timeline markers */
+.journey-marker {
+  background: #1e293b !important;
+  border-color: #64748b !important;
+  color: #f8fafc !important;
+}
+
+.journey-marker-done {
+  background: #059669 !important;
+  border-color: #34d399 !important;
+  color: #ffffff !important;
+}
+
+.journey-line {
+  background: #475569 !important;
+}
+
+.journey-line-done {
+  background: #10b981 !important;
+}
+
+/* Checklist */
+.journey-tasks li {
+  color: #e2e8f0 !important;
+}
+
+.journey-tasks .journey-task-done {
+  color: #6ee7b7 !important;
+}
+
+/* Buttons */
+.journey-action {
+  background: #3730a3 !important;
+  border: 1px solid #818cf8 !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.journey-action:hover {
+  background: #4338ca !important;
+}
+
+/* Next milestone panel */
+.journey-next-card {
+  background: #102b3a !important;
+  border: 1px solid #0891b2 !important;
+}
+
+.journey-next-card h3 {
+  color: #67e8f9 !important;
+}
+
+.journey-next-card p {
+  color: #e0f2fe !important;
+}
+/* =========================================
+   JOURNEY — MILESTONE ENHANCEMENTS
+========================================= */
+
+.journey-stat span {
+  display: block;
+  margin-bottom: 9px;
+  color: #cbd5e1 !important;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.journey-stat small {
+  display: block;
+  margin-top: 7px;
+  color: #94a3b8 !important;
+  font-size: 11px;
+}
+
+.stat-mini-track {
+  width: 100%;
+  height: 5px;
+  margin-top: 13px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #334155;
+}
+
+.stat-mini-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #6366f1;
+  transition: width 0.4s ease;
+}
+
+.journey-card-complete {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+.journey-card-top h4 {
+  margin: 10px 0 0;
+  color: #ffffff !important;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.journey-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #065f46;
+  border: 1px solid #10b981;
+  color: #6ee7b7;
+  font-weight: 800;
+}
+
+.milestone-progress {
+  margin: 18px 0;
+}
+
+.milestone-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.milestone-progress-header span {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.milestone-progress-header strong {
+  color: #e2e8f0;
+  font-size: 12px;
+}
+
+.milestone-progress-track {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #334155;
+}
+
+.milestone-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #6366f1;
+  transition: width 0.4s ease;
+}
+
+.journey-card-complete .milestone-progress-fill {
+  background: #10b981;
+}
+
+.journey-completed-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border-radius: 9px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .journey-card-top h4 {
+    font-size: 16px;
+  }
+
+  .journey-check {
+    width: 30px;
+    height: 30px;
+  }
+
+  .journey-completed-message {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* =========================================
+   MY ROADMAP — POLISH
+========================================= */
+
+.roadmap-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.roadmap-header {
+  margin-bottom: 28px;
+}
+
+.roadmap-heading {
+  margin: 8px 0 8px;
+  color: #ffffff !important;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.roadmap-subtitle {
+  margin: 0;
+  color: #cbd5e1 !important;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Progress card */
+
+.roadmap-progress-card {
+  margin-bottom: 34px;
+  padding: 25px;
+  border: 1px solid #3f4b68;
+  border-radius: 20px;
+  background: #151c2e !important;
+}
+
+.roadmap-progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.roadmap-progress-info h3 {
+  margin: 7px 0 0;
+  color: #ffffff !important;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.roadmap-progress-info strong {
+  color: #a5b4fc !important;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.roadmap-progress-track {
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #334155 !important;
+}
+
+.roadmap-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #06b6d4
+  ) !important;
+  transition: width 0.45s ease;
+}
+
+.roadmap-progress-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 13px;
+}
+
+.roadmap-progress-bottom p {
+  margin: 0;
+  color: #cbd5e1 !important;
+  font-size: 13px;
+}
+
+.roadmap-progress-bottom span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* Roadmap timeline */
+
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap-step {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: 18px;
+}
+
+.roadmap-step-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roadmap-step-marker > span {
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 2px solid #64748b;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.roadmap-step-marker > .marker-done {
+  border-color: #34d399;
+  background: #047857;
+  color: #ffffff;
+}
+
+.roadmap-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 28px;
+  background: #475569;
+}
+
+.roadmap-connector.connector-done {
+  background: #10b981;
+}
+
+/* Cards */
+
+.roadmap-step-card {
+  margin-bottom: 22px;
+  padding: 22px;
+  border: 1px solid #35415b;
+  border-radius: 18px;
+  background: #151c2e !important;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.roadmap-step-card:hover {
+  transform: translateY(-2px);
+  border-color: #818cf8;
+}
+
+.roadmap-card-complete {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  background: #14251f !important;
+}
+
+/* Card top */
+
+.roadmap-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 14px;
+}
+
+.roadmap-step-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.status-completed {
+  border: 1px solid #10b981;
+  background: #064e3b;
+  color: #a7f3d0;
+}
+
+.status-active {
+  border: 1px solid #818cf8;
+  background: #312e81;
+  color: #e0e7ff;
+}
+
+/* Titles */
+
+.roadmap-step-card h3 {
+  margin: 0 0 8px;
+  color: #ffffff !important;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.roadmap-step-description {
+  margin: 0 0 19px;
+  color: #cbd5e1 !important;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Tasks */
+
+.roadmap-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 19px;
+}
+
+.roadmap-task {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #e2e8f0 !important;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.roadmap-task > span {
+  color: #818cf8;
+  font-weight: 800;
+}
+
+.roadmap-task-complete {
+  color: #a7f3d0 !important;
+}
+
+.roadmap-task-complete > span {
+  color: #34d399;
+}
+
+/* Buttons */
+
+.roadmap-toggle {
+  min-height: 38px;
+  padding: 9px 14px;
+  border: 1px solid #6366f1;
+  border-radius: 9px;
+  background: #3730a3;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.roadmap-toggle:hover {
+  transform: translateY(-1px);
+  background: #4338ca;
+}
+
+.roadmap-toggle.toggle-complete {
+  border-color: #475569;
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+.roadmap-toggle.toggle-complete:hover {
+  background: #334155;
+}
+
+/* Completion message */
+
+.roadmap-completed-note {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #6ee7b7;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .roadmap-page {
+    padding-bottom: 25px;
+  }
+
+  .roadmap-progress-card {
+    padding: 19px;
+  }
+
+  .roadmap-progress-info {
+    align-items: flex-start;
+  }
+
+  .roadmap-progress-info strong {
+    font-size: 25px;
+  }
+
+  .roadmap-progress-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .roadmap-step {
+    grid-template-columns: 30px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
+  .roadmap-step-marker > span {
+    width: 29px;
+    height: 29px;
+    font-size: 11px;
+  }
+
+  .roadmap-step-card {
+    padding: 17px;
+    margin-bottom: 18px;
+  }
+
+  .roadmap-step-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .roadmap-toggle {
+    width: 100%;
+  }
+
+  .roadmap-step-card h3 {
+    font-size: 17px;
+  }
+}
